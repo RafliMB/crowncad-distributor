@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrownCAD Distributor Indonesia — CAD 3D Cloud untuk Industri</title>
+    <meta name="description" content="Distributor CrownCAD di Indonesia: lisensi, implementasi, pelatihan, dan dukungan lokal. Desain 3D di browser dengan kolaborasi real-time, dual-kernel DGM + DCS, dan kontrol versi terpusat." />
+    <meta name="theme-color" content="#040A1E" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="512x512" />
+    <link rel="icon" href="assets/images/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
+    <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --brand-1: #1D63FF; --brand-2: #00A6FF; --ink: #040A1E; --page: #F6F8FC; }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 1023.98px) { html { scroll-behavior: auto; } }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--page); color: #0f172a; overflow-x: hidden; }
+        ::selection { background: #1D63FF; color: #fff; }
+        section[id] { scroll-margin-top: 84px; }
+        .accent { font-family: 'Instrument Serif', serif; font-style: italic; letter-spacing: -0.012em; }
+        .grad-text {
+            background: linear-gradient(115deg, #0F52BA 0%, #1D63FF 45%, #00A6FF 100%);
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent; -webkit-text-fill-color: transparent;
+            padding-right: 0.06em; padding-bottom: 0.08em;
+        }
+        .blueprint {
+            background-image:
+                linear-gradient(to right, rgba(29, 99, 255, 0.075) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(29, 99, 255, 0.075) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+        .blueprint-fade {
+            -webkit-mask-image: radial-gradient(70% 65% at 50% 30%, #000 0%, rgba(0,0,0,0.75) 55%, transparent 100%);
+            mask-image: radial-gradient(70% 65% at 50% 30%, #000 0%, rgba(0,0,0,0.75) 55%, transparent 100%);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Reveal on scroll */
+        html.js [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        html.js [data-reveal].is-visible { opacity: 1; transform: none; }
+
+        /* Header + nav */
+        #site-header { transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+        #site-header.is-scrolled {
+            background-color: rgba(246, 248, 252, 0.94);
+            box-shadow: 0 16px 40px -32px rgba(4, 10, 30, 0.55);
+            border-color: rgba(15, 23, 42, 0.07);
+        }
+        .nav-link.is-active { color: #0F52BA; background: #fff; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.09); }
+
+        /* Module tabs */
+        .cap-tab { transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+        .cap-tab.is-active {
+            background: linear-gradient(120deg, #1D63FF 0%, #00A6FF 100%);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 16px 32px -18px rgba(29, 99, 255, 0.9);
+        }
+        .cap-tab.is-active .cap-tab-num { color: rgba(255, 255, 255, 0.72); }
+        .cap-tab.is-active .cap-tab-sub { color: rgba(255, 255, 255, 0.78); }
+        .cap-tab.is-active .cap-tab-arrow { opacity: 1; transform: translateX(0); color: #fff; }
+        .cap-tab-arrow { opacity: 0; transform: translateX(-4px); transition: all 0.25s ease; }
+        .cap-tab:not(.is-active):hover .cap-tab-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Floating bits in the hero mock */
+        @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .floaty { animation: floaty 6.5s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .floaty { animation: none; } }
+
+        /* WhatsApp float: icon rolls, pill expands */
+        .wa-float {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 14px 34px -10px rgba(18, 140, 126, 0.75), 0 2px 6px rgba(0, 0, 0, 0.18);
+            transition: box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .wa-float:hover, .wa-float:focus-visible {
+            box-shadow: 0 18px 40px -10px rgba(18, 140, 126, 0.9), 0 4px 10px rgba(0, 0, 0, 0.22);
+        }
+        .wa-float-icon { display: grid; place-items: center; flex: none; transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .wa-float:hover .wa-float-icon, .wa-float:focus-visible .wa-float-icon { transform: rotate(360deg); }
+        .wa-float-text {
+            max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+            font-size: 14px; font-weight: 700; letter-spacing: 0.2px;
+            padding-left: 0; padding-right: 0; transform: translateX(-12px);
+            transition: max-width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, padding 0.4s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .wa-float:hover .wa-float-text, .wa-float:focus-visible .wa-float-text {
+            max-width: 160px; opacity: 1; padding-left: 12px; padding-right: 20px; transform: translateX(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .wa-float-icon, .wa-float-text { transition: none; }
+            .wa-float:hover .wa-float-icon, .wa-float:focus-visible .wa-float-icon { transform: none; }
+        }
+
+        /* Back to top */
+        .to-top {
+            opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.92);
+            transition: opacity 0.28s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, color 0.2s ease, border-color 0.2s ease, visibility 0.28s;
+        }
+        .to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .to-top:hover { box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.5); }
+        @media (prefers-reduced-motion: reduce) {
+            .to-top { transform: none; transition: opacity 0.2s linear; }
+            .to-top.is-visible { transform: none; }
+        }
+
+        /* Mobile menu */
+        @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+        #mobile-menu:not(.hidden) { animation: menuIn 0.18s ease-out; }
+        @media (prefers-reduced-motion: reduce) { #mobile-menu:not(.hidden) { animation: none; } }
+
+        /* Gallery */
+        #gallery-lightbox.open { display: flex; }
+        #gallery-lightbox img { background: rgba(15, 23, 42, 0.4); }
+
+        @media (prefers-reduced-motion: reduce) {
+            html.js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .gallery-item img { transition: none !important; }
+            .animate-ping { animation: none !important; }
+            * { scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-full focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white">Lewati ke konten</a>
+
+    <!-- ================= HEADER ================= -->
+    <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-slate-900/5 bg-[#F6F8FC]/85 backdrop-blur-xl">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-[70px]">
+            <a href="#" class="flex shrink-0 items-center" aria-label="CrownCAD Distributor Indonesia — beranda">
+                <img src="assets/images/logo.png" alt="CrownCAD" class="h-8 w-auto object-contain sm:h-9" />
+            </a>
+
+            <nav class="hidden items-center gap-0.5 lg:flex" aria-label="Navigasi utama">
+                <a href="#mengapa" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">Mengapa</a>
+<a href="#solusi" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">Platform</a>
+<a href="#produk" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">Produk</a>
+<a href="#benefits" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">After Sales</a>
+<a href="#trainer" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">Trainer</a>
+<a href="#galeri" data-nav class="nav-link rounded-full px-3 py-2 text-[12.5px] font-semibold text-slate-600 transition hover:text-slate-900">Galeri</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="https://wa.me/6281902244660" target="_blank" rel="noopener" class="hidden items-center gap-1.5 rounded-full px-4 py-2.5 text-[12px] font-bold text-white shadow-lg shadow-blue-600/20 transition hover:opacity-95 sm:inline-flex" style="background: linear-gradient(90deg, #1D63FF 0%, #00A6FF 100%);">
+                    <span>Daftar Gratis</span>
+                    <i class="ph-bold ph-arrow-up-right text-xs"></i>
+                </a>
+                <button id="mobile-menu-btn" type="button" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition active:scale-95 lg:hidden" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="ph-bold ph-list text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MOBILE MENU ================= -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] hidden overflow-y-auto bg-[#040A1E] px-5 pb-8 pt-4 text-white">
+        <div class="flex items-center justify-between">
+            <img src="assets/images/logo-white.png" alt="CrownCAD" class="h-9 w-auto object-contain" />
+            <button id="mobile-menu-close" type="button" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white active:scale-95" aria-label="Tutup menu">
+                <i class="ph-bold ph-x text-xl"></i>
+            </button>
+        </div>
+        <p class="mt-8 text-[10px] font-bold uppercase tracking-[0.24em] text-sky-400">CrownCAD Indonesia</p>
+        <nav class="mt-3" aria-label="Navigasi seluler">
+            <a href="#mengapa" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">01</span>Mengapa</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#solusi" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">02</span>Platform</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#produk" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">03</span>Produk</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#benefits" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">04</span>After Sales</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#trainer" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">05</span>Trainer</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#galeri" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">06</span>Galeri</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+<a href="#contact" class="group flex items-center justify-between border-b border-white/10 py-4 text-lg font-semibold text-slate-200">
+                    <span class="flex items-center gap-3"><span class="text-[10px] font-bold tracking-widest text-sky-400/80">07</span>Kontak & Lokasi</span>
+                    <i class="ph-bold ph-arrow-up-right text-sm text-slate-500 transition group-hover:text-sky-400"></i>
+                </a>
+        </nav>
+        <div class="mt-7 flex flex-col gap-2.5">
+            <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20mendaftar%20akun%20CrownCAD" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(90deg, #1D63FF 0%, #00A6FF 100%);">
+                <span>Daftar Akun Gratis</span>
+                <i class="ph-bold ph-arrow-up-right"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20konsultasi%20terkait%20CrownCAD" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-full border border-emerald-500/30 bg-white/5 px-6 py-3 text-sm font-semibold text-emerald-300">
+                <i class="ph-fill ph-whatsapp-logo text-base"></i>
+                <span>Chat WhatsApp Konsultasi</span>
+            </a>
+            <p class="mt-1 text-center text-[11px] text-slate-400">PT Vexa Dinamika Teknologi &bull; Plaza Summarecon Bekasi</p>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- ================= HERO ================= -->
+        <section class="relative overflow-hidden bg-[#040A1E] text-white">
+            <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+                <div class="absolute inset-0 bg-[radial-gradient(115%_120%_at_82%_25%,rgba(29,99,255,0.22)_0%,rgba(0,166,255,0.10)_38%,transparent_68%)]"></div>
+                <div class="blueprint blueprint-fade absolute inset-0 opacity-[0.18]"></div>
+                <div class="absolute -left-28 top-1/4 h-72 w-72 rounded-full bg-[#1D63FF]/15 blur-3xl"></div>
+            </div>
+
+            <div class="pointer-events-none absolute inset-y-0 right-[15rem] hidden w-[55%] xl:block" aria-hidden="true" style="mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 80%, transparent 96%); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 80%, transparent 96%);">
+                <img src="assets/images/hero/s0-1-1920.webp" srcset="assets/images/hero/s0-1-1200.webp 1200w, assets/images/hero/s0-1-1920.webp 1920w" sizes="(min-width: 1280px) 50vw, 100vw" alt="" width="1920" height="966" class="absolute inset-0 h-full w-full object-cover object-right" loading="eager" decoding="async" fetchpriority="high" />
+                <div class="absolute inset-0" style="background: linear-gradient(90deg, #040A1E 0%, rgba(4,10,30,0.94) 16%, rgba(4,10,30,0.86) 26%, rgba(4,10,30,0.28) 40%, rgba(4,10,30,0.06) 62%, rgba(4,10,30,0) 100%);"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#040A1E]/60 via-transparent to-[#040A1E]/20"></div>
+            </div>
+
+            <div class="relative mx-auto flex max-w-7xl flex-col justify-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 xl:min-h-[620px] xl:py-0">
+                <div class="max-w-[34rem]" data-reveal>
+                    <div class="inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 backdrop-blur">
+                        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-[#4C8DFF] to-[#5FD0FF]"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-sky-200 sm:text-[11px]">Distributor CrownCAD di Indonesia</span>
+                    </div>
+
+                    <h1 class="mt-5 text-[2rem] font-extrabold leading-[1.06] tracking-[-0.035em] text-white sm:mt-6 sm:text-[46px] lg:text-[48px] xl:text-[52px] 2xl:text-[56px]">
+                        CAD 3D cloud<br />
+                        untuk <span class="accent text-sky-300">industri Indonesia.</span>
+                    </h1>
+
+                    <p class="mt-5 max-w-[32rem] text-[14px] leading-relaxed text-slate-300 sm:mt-6 sm:text-base">
+                        CrownCAD menghadirkan desain 3D berbasis browser dengan kolaborasi real-time, dual-kernel modeling (DGM + DCS), dan kontrol versi cerdas &mdash; didampingi tim lokal mulai dari pemilihan lisensi sampai implementasi.
+                    </p>
+
+                    <div class="mt-7 flex w-full max-w-sm flex-col gap-2.5 sm:max-w-none sm:flex-row sm:items-center">
+                        <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20mendaftar%20akun%20CrownCAD" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-xl shadow-black/30 transition hover:-translate-y-0.5 hover:bg-slate-100 active:scale-95">
+                            <span>Daftar Gratis</span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20minta%20penawaran%20CrownCAD" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15 active:scale-95">
+                            <i class="ph-fill ph-chats-circle text-lg text-sky-300"></i>
+                            <span>Minta Penawaran</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-9 w-full max-w-[714px] xl:hidden" data-reveal style="transition-delay:80ms">
+                    <div class="relative w-full overflow-hidden rounded-2xl border border-white/15 bg-[#071124] shadow-[0_35px_90px_-25px_rgba(0,0,0,0.85)]">
+                        <img src="assets/images/hero/s0-1-1200.webp" srcset="assets/images/hero/s0-1-1200.webp 1200w, assets/images/hero/s0-1-1920.webp 1920w" sizes="100vw" alt="CrownCAD berjalan di browser desktop dan aplikasi seluler dengan model assembly 3D" width="1920" height="966" class="block h-auto w-full" loading="eager" decoding="async" fetchpriority="high" />
+                        <div class="pointer-events-none absolute inset-0" style="background: linear-gradient(150deg, rgba(29,99,255,0.16) 0%, rgba(4,10,30,0.02) 45%, rgba(4,10,30,0.42) 100%);"></div>
+                        <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STATS ================= -->
+        <section class="bg-[#040A1E] px-4 pb-12 sm:px-6 xl:pb-14">
+            <div class="mx-auto max-w-7xl">
+                <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-[0_24px_60px_-40px_rgba(0,0,0,0.9)] sm:rounded-3xl lg:grid-cols-4" data-reveal>
+                    <div class="bg-[#050D24]/90 px-4 py-5 text-center backdrop-blur sm:px-6 sm:py-6">
+                        <p class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl"><span data-count="500000" data-suffix="+">0</span></p>
+                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-[11px]">Pengguna terdaftar</p>
+                    </div>
+                    <div class="bg-[#050D24]/90 px-4 py-5 text-center backdrop-blur sm:px-6 sm:py-6">
+                        <p class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl"><span data-count="10000" data-suffix="+">0</span></p>
+                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-[11px]">Perusahaan</p>
+                    </div>
+                    <div class="bg-[#050D24]/90 px-4 py-5 text-center backdrop-blur sm:px-6 sm:py-6">
+                        <p class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl"><span data-prefix="&lt;" data-count="100" data-suffix="ms">0ms</span></p>
+                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-[11px]">Response time</p>
+                    </div>
+                    <div class="bg-[#050D24]/90 px-4 py-5 text-center backdrop-blur sm:px-6 sm:py-6">
+                        <p class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl"><span data-count="300000" data-suffix="+">0</span></p>
+                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-[11px]">Parts handling</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MENGAPA ================= -->
+        <section id="mengapa" class="border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto max-w-7xl">
+                <div class="mb-9 grid gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end lg:gap-14">
+                    <div data-reveal>
+                        <p class="mb-3 flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>01 &mdash; Mengapa CrownCAD</p>
+                        <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[46px]">Dipercaya di Berbagai<br class="hidden sm:block" /> <span class="accent grad-text">Industri</span></h2>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base" data-reveal style="transition-delay:80ms">
+                        Bergabung dengan 500.000+ pengguna terdaftar di seluruh dunia yang mempercayai CrownCAD untuk mengembangkan produk mereka &mdash; dari tim kecil sampai lini produksi global.
+                    </p>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-5">
+                    <article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:60ms">
+                        <div class="relative aspect-[16/9] overflow-hidden">
+                            <img src="assets/images/industries/aerospace.jpg" alt="Pesawat jet di apron bandara" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                            <span class="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold tracking-widest text-slate-700 shadow-sm">01</span>
+                        </div>
+                        <div class="p-5 sm:p-6">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="text-lg font-bold tracking-tight text-slate-900">Aerospace</h3>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400">Industri</span>
+                            </div>
+                            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">Desain komponen dan struktur pesawat menuntut presisi tinggi serta kolaborasi lintas tim.</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-1.5 text-[12px] text-slate-600 sm:grid-cols-2">
+                                <li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Part & assembly kompleks</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Review desain real-time</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Kompatibilitas format CAD</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Manajemen revisi terpusat</span></li>
+                            </ul>
+                        </div>
+                    </article>
+<article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:120ms">
+                        <div class="relative aspect-[16/9] overflow-hidden">
+                            <img src="assets/images/industries/machinery.jpg" alt="Gambar teknik mesin dan jangka sorong" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                            <span class="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold tracking-widest text-slate-700 shadow-sm">02</span>
+                        </div>
+                        <div class="p-5 sm:p-6">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="text-lg font-bold tracking-tight text-slate-900">Machinery</h3>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400">Industri</span>
+                            </div>
+                            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">Perancangan mesin dan peralatan industri dengan geometri kompleks serta banyak komponen.</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-1.5 text-[12px] text-slate-600 sm:grid-cols-2">
+                                <li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Sheet metal & weldment</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Library part GB/ISO</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Assembly 300K+ part</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Drawing otomatis</span></li>
+                            </ul>
+                        </div>
+                    </article>
+<article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:180ms">
+                        <div class="relative aspect-[16/9] overflow-hidden">
+                            <img src="assets/images/industries/transportation.jpg" alt="Deretan mobil di dealer otomotif" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                            <span class="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold tracking-widest text-slate-700 shadow-sm">03</span>
+                        </div>
+                        <div class="p-5 sm:p-6">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="text-lg font-bold tracking-tight text-slate-900">Transportation</h3>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400">Industri</span>
+                            </div>
+                            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">Pengembangan kendaraan dan komponen otomotif dari konsep hingga siap produksi.</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-1.5 text-[12px] text-slate-600 sm:grid-cols-2">
+                                <li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Surface & solid modeling</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Drawing 2D otomatis</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Manajemen versi</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Approval workflow</span></li>
+                            </ul>
+                        </div>
+                    </article>
+<article class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:240ms">
+                        <div class="relative aspect-[16/9] overflow-hidden">
+                            <img src="assets/images/industries/education.jpg" alt="Suasana kelas dengan guru dan siswa" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                            <span class="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold tracking-widest text-slate-700 shadow-sm">04</span>
+                        </div>
+                        <div class="p-5 sm:p-6">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="text-lg font-bold tracking-tight text-slate-900">Education</h3>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400">Industri</span>
+                            </div>
+                            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">Mendukung pembelajaran CAD di kampus dan sekolah kejuruan tanpa instalasi berat.</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-1.5 text-[12px] text-slate-600 sm:grid-cols-2">
+                                <li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Akses lewat browser</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Lisensi lab & kelas</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Kolaborasi tugas</span></li><li class="flex items-start gap-2"><span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500"></span><span>Tanpa spek tinggi</span></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SOLUSI / CLOUD ================= -->
+        <section id="solusi" class="px-4 py-16 sm:px-6 sm:py-20">
+            <div class="mx-auto max-w-7xl">
+                <div class="relative overflow-hidden rounded-[28px] px-5 py-9 text-white sm:rounded-[36px] sm:px-9 sm:py-12 lg:px-14 lg:py-14" style="background: radial-gradient(120% 100% at 85% 8%, #123A9E 0%, #081A47 42%, #040A1E 82%);">
+                    <div class="pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden="true" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 18px 18px; -webkit-mask-image: linear-gradient(120deg, #000 0%, transparent 62%); mask-image: linear-gradient(120deg, #000 0%, transparent 62%);"></div>
+                    <div class="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full bg-[#1D63FF]/30 blur-3xl" aria-hidden="true"></div>
+
+                    <div class="relative grid items-center gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
+                        <div data-reveal>
+                            <p class="mb-3 flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-sky-300 sm:text-[11px]"><span class="h-px w-7 bg-sky-400"></span>02 &mdash; Platform Cloud</p>
+                            <h2 class="text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-4xl lg:text-[44px]">Bekerja dari <span class="accent block text-sky-200 sm:inline">Mana Saja, Kapan Saja</span></h2>
+                            <p class="mt-4 max-w-lg text-sm leading-relaxed text-slate-300 sm:text-base">Platform cloud-native yang memungkinkan tim Anda berkolaborasi secara real-time dari lokasi berbeda &mdash; satu model, satu versi kebenaran.</p>
+
+                            <ul class="mt-6 space-y-3 text-sm text-slate-200">
+                                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white/10 text-sky-300"><i class="ph-bold ph-users-three text-xs"></i></span><span><strong class="font-bold text-white">Multi-user real-time.</strong> Beberapa engineer membuka dan mengedit model yang sama secara bersamaan.</span></li>
+                                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white/10 text-sky-300"><i class="ph-bold ph-git-branch text-xs"></i></span><span><strong class="font-bold text-white">Versioning terpusat.</strong> Riwayat revisi, branch, dan rollback tanpa file salinan yang berserakan.</span></li>
+                                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white/10 text-sky-300"><i class="ph-bold ph-shield-check text-xs"></i></span><span><strong class="font-bold text-white">Aman untuk tim.</strong> SSO/SAML, RBAC granular, audit trail, dan data terenkripsi.</span></li>
+                                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white/10 text-sky-300"><i class="ph-bold ph-devices text-xs"></i></span><span><strong class="font-bold text-white">Lintas perangkat.</strong> Desain dan review mulus di PC, tablet, maupun smartphone.</span></li>
+                            </ul>
+
+                            <div class="mt-7 flex flex-wrap gap-2">
+                                <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-semibold text-slate-200">99,9% uptime SLA</span>
+                                <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-semibold text-slate-200">ISO 27001</span>
+                                <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-semibold text-slate-200">Backup harian</span>
+                            </div>
+
+                            <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20berdiskusi%20soal%20kebutuhan%20tim%20kami" target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl active:scale-95">
+                                <span>Diskusikan alur kerja tim</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="relative" data-reveal style="transition-delay:120ms">
+                            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl">
+                                <img src="assets/images/cloud-1.jpg" alt="Tim bekerja bersama pada model yang sama di CrownCAD" class="aspect-[16/11] w-full object-cover opacity-95" loading="lazy" decoding="async" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#040A1E] via-[#040A1E]/25 to-transparent"></div>
+                                <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-600/80 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur"><i class="ph-fill ph-users-three"></i>Multi-User Real-Time</span>
+                                    <h3 class="mt-2 text-base font-bold sm:text-lg">Kolaborasi Tanpa Batas</h3>
+                                    <p class="mt-1 text-[11.5px] leading-relaxed text-slate-300 sm:text-xs">Tim engineering dapat bekerja pada model yang sama secara bersamaan dengan update real-time.</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 grid grid-cols-[1.15fr_0.85fr] gap-3">
+                                <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                                    <img src="assets/images/cloud-2.jpg" alt="Arsitektur cloud dan keamanan data CrownCAD" class="h-32 w-full object-cover opacity-90 sm:h-36" loading="lazy" decoding="async" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#040A1E] via-[#040A1E]/35 to-transparent"></div>
+                                    <div class="absolute inset-x-0 bottom-0 p-3.5">
+                                        <span class="inline-flex items-center gap-1 rounded-full bg-emerald-600/80 px-2 py-0.5 text-[9px] font-bold text-white backdrop-blur"><i class="ph-fill ph-lock-key"></i>Enterprise Security</span>
+                                        <h3 class="mt-1.5 text-xs font-bold sm:text-sm">Keamanan Tingkat Enterprise</h3>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-3.5">
+                                    <p class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">99,9%</p>
+                                    <p class="mt-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-sky-300">Uptime SLA</p>
+                                    <p class="mt-2 text-[10px] leading-relaxed text-slate-400">Backup harian &amp; audit trail lengkap untuk tim Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PRODUK ================= -->
+        <section id="produk" class="border-y border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto max-w-7xl">
+                <div class="mb-9 grid gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end lg:gap-14">
+                    <div data-reveal>
+                        <p class="mb-3 flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>03 &mdash; Kemampuan Produk</p>
+                        <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[46px]">Kemampuan Inti<br class="hidden sm:block" /> <span class="accent grad-text">Mendukung Alur Kerja CAD Anda</span></h2>
+                    </div>
+                    <div data-reveal style="transition-delay:80ms">
+                        <p class="text-sm leading-relaxed text-slate-600 sm:text-base">Modul lengkap dari sketching sampai manajemen versi &mdash; semua di browser, dan seluruh tim selalu melihat versi yang sama.</p>
+                        <div class="mt-4 flex flex-wrap gap-1.5">
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Kompatibilitas data</span>
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Desain part</span>
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Assembly</span>
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Drawing</span>
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Multi-user</span>
+                            <span class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold text-slate-600">Manajemen versi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-[248px_minmax(0,1fr)] lg:gap-8">
+                    <!-- vertical tabs -->
+                    <div class="min-w-0 lg:sticky lg:top-24 lg:self-start">
+                        <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar lg:flex-col lg:overflow-visible lg:pb-0" role="tablist" aria-label="Kategori modul" aria-orientation="vertical">
+                            <button type="button" id="tab-core" data-tab="core" role="tab" aria-selected="true" aria-controls="panel-core" class="cap-tab is-active flex flex-none items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3.5 py-3 text-left lg:w-full">
+                                <span class="cap-tab-num text-[10px] font-extrabold tabular-nums text-slate-400">01</span>
+                                <span class="flex-1">
+                                    <span class="block whitespace-nowrap text-[13px] font-bold sm:text-sm">Modul Inti</span>
+                                    <span class="cap-tab-sub mt-0.5 block text-[10px] font-medium text-slate-400">5 modul pemodelan</span>
+                                </span>
+                                <i class="cap-tab-arrow ph-bold ph-arrow-right hidden text-xs lg:block"></i>
+                            </button>
+                            <button type="button" id="tab-pro" data-tab="pro" role="tab" aria-selected="false" aria-controls="panel-pro" class="cap-tab flex flex-none items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3.5 py-3 text-left lg:w-full">
+                                <span class="cap-tab-num text-[10px] font-extrabold tabular-nums text-slate-400">02</span>
+                                <span class="flex-1">
+                                    <span class="block whitespace-nowrap text-[13px] font-bold sm:text-sm">Modul Profesional</span>
+                                    <span class="cap-tab-sub mt-0.5 block text-[10px] font-medium text-slate-400">4 modul lanjutan</span>
+                                </span>
+                                <i class="cap-tab-arrow ph-bold ph-arrow-right hidden text-xs lg:block"></i>
+                            </button>
+                            <button type="button" id="tab-collab" data-tab="collab" role="tab" aria-selected="false" aria-controls="panel-collab" class="cap-tab flex flex-none items-center gap-3 rounded-2xl border border-slate-200 bg-white px-3.5 py-3 text-left lg:w-full">
+                                <span class="cap-tab-num text-[10px] font-extrabold tabular-nums text-slate-400">03</span>
+                                <span class="flex-1">
+                                    <span class="block whitespace-nowrap text-[13px] font-bold sm:text-sm">Kolaborasi</span>
+                                    <span class="cap-tab-sub mt-0.5 block text-[10px] font-medium text-slate-400">2 modul tim</span>
+                                </span>
+                                <i class="cap-tab-arrow ph-bold ph-arrow-right hidden text-xs lg:block"></i>
+                            </button>
+                        </div>
+
+                        <div class="mt-6 hidden rounded-2xl border border-slate-200 bg-slate-50 p-5 lg:block" data-reveal>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-600">Layanan distributor</p>
+                            <p class="mt-2 text-base font-bold leading-snug tracking-tight text-slate-900">Lisensi, training,<br />dan dukungan.</p>
+                            <p class="mt-2 text-[11.5px] leading-relaxed text-slate-600">Satu partner untuk lisensi, implementasi, dan pelatihan tim Anda. Tidak perlu instalasi di tiap komputer.</p>
+                            <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20berdiskusi%20soal%20kebutuhan%20tim%20kami" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1.5 text-[11.5px] font-bold text-blue-600 hover:text-blue-700">Konsultasikan kebutuhan Anda <i class="ph-bold ph-arrow-up-right text-[10px]"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- panels -->
+                    <div class="min-w-0">
+                        <div id="panel-core" role="tabpanel" aria-labelledby="tab-core" tabindex="0">
+                            <div class="grid gap-3.5 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+                                <article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:60ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/core modeling modules/sketch.jpg" alt="Sketching" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Core</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Sketching</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung pembuatan polyline, kurva busur, slot, dan lainnya.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan dimensi cepat dan constraint geometris.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menyediakan alat editing untuk fillet, chamfer, trim, offset, dan lainnya.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Termasuk fungsi inspeksi dan perbaikan.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:120ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/core modeling modules/part.jpg" alt="Part Design" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Core</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Desain Part</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung pemodelan geometri kurva/permukaan kompleks.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menawarkan pemodelan solid parametrik berbasis fitur.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan pemodelan langsung untuk model parametrik dan non-parametrik.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menghadirkan kemampuan pemodelan hybrid surface/mesh yang powerful.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:180ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/core modeling modules/assembly.jpg" alt="Assembly Design" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Core</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Desain Assembly</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung desain assembly top-down dan bottom-up.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan pemasangan komponen yang efisien.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memastikan sinkronisasi real-time antara assembly dan part.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menyediakan pemeriksaan interferensi antar komponen.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:240ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/core modeling modules/drawing.jpg" alt="Drawing" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Core</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Drawing</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Otomatis menghasilkan tampilan proyeksi dari model 3D.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menawarkan metode drafting sesuai standar internasional.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung dimensi otomatis.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mempertahankan sinkronisasi antara model 2D dan 3D.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:60ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/core modeling modules/compatibility.jpg" alt="Data Compatibility" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Core</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Kompatibilitas Data</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Import format standar seperti IGES, STEP, dan Parasolid.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Baca langsung model dari CATIA, NX (UG), Creo, SOLIDWORKS, Inventor, Revit, AutoCAD, dan lainnya.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Export model ke IGES, STEP, CATIA, NX (UG), SOLIDWORKS, AutoCAD, STL, dan lainnya.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+                            </div>
+                        </div>
+                        <div id="panel-pro" role="tabpanel" aria-labelledby="tab-pro" tabindex="0" class="hidden">
+                            <div class="grid gap-3.5 sm:grid-cols-2 sm:gap-4">
+                                <article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:60ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/professional modules/sheet-metal-module.jpg" alt="Sheet Metal Module" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Pro</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Modul Sheet Metal</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menyediakan fitur sheet metal dasar (misalnya, louver, stamping).</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung unfolding dan folding cepat untuk mempermudah alur kerja desain-ke-produksi.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:120ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/professional modules/weldment-module.jpg" alt="Weldment Module" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Pro</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Modul Weldment</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Menawarkan library profil struktural standar.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan pembuatan sketch path 2D dan 3D dengan cepat.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan modifikasi cepat gaya koneksi sudut.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung export cut list weldment.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:180ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/professional modules/mbd.jpg" alt="MBD" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Pro</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">MBD</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan anotasi dan catatan 3D langsung untuk komunikasi mulus antara pengguna dan manufaktur.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung transfer PMI ke drawing 2D untuk meningkatkan efisiensi drafting.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Membaca dan import data MBD dari model eksternal untuk desain kolaboratif.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:240ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/professional modules/animation.png" alt="Animation" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Pro</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Animasi</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mensimulasikan gerakan mekanisme secara realistis berdasarkan hubungan pemasangan assembly.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memungkinkan pengguna mendefinisikan status gerakan secara bebas melalui keyframe berbasis waktu.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mendukung output video AVI/MP4 untuk menunjukkan mekanisme &amp; mempercepat keputusan.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+                            </div>
+                        </div>
+                        <div id="panel-collab" role="tabpanel" aria-labelledby="tab-collab" tabindex="0" class="hidden">
+                            <div class="grid gap-3.5 md:grid-cols-2 md:gap-4">
+                                <article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:60ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/collaboration &amp; management/version-management.png" alt="Version Management" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Team</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Manajemen Versi</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Memastikan keamanan data melalui penyimpanan dan transmisi cloud terenkripsi.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Melacak riwayat editing model lengkap, memungkinkan pengguna untuk rollback ke versi historis mana pun untuk editing.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span>Mengimplementasikan kontrol versi melalui node dan branch versi, menyederhanakan review desain.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+<article class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70" data-reveal style="transition-delay:120ms">
+                            <div class="relative aspect-[16/10] overflow-hidden rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-blue-50/70">
+                                <img src="assets/images/collaboration &amp; management/collaboration.png" alt="Collaboration" loading="lazy" decoding="async" class="h-full w-full object-contain p-4 mix-blend-multiply transition duration-500 group-hover:scale-[1.03]" />
+                                <span class="absolute left-2.5 top-2.5 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-900/5">Team</span>
+                            </div>
+                            <div class="flex flex-1 flex-col px-2 pb-1.5 pt-4">
+                                <h3 class="mb-2.5 text-[15px] font-bold tracking-tight text-slate-900 sm:text-base">Kolaborasi</h3>
+                                <ul class="space-y-2 text-[12.5px] leading-relaxed text-slate-600">
+                                    <li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span><strong>Kolaborasi Berbasis Cloud:</strong> Inovasi, keamanan, dan efisiensi di semua perangkat.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span><strong>Kolaborasi Tim:</strong> Kerja tim yang efisien melalui pembuatan tim.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span><strong>Kolaborasi Aman:</strong> Kontrol izin ketat dan versioning untuk melindungi integritas data.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span><strong>Kolaborasi Efisien:</strong> Meminimalkan overhead transfer data dan respons instan.</span></li>
+<li class="flex items-start gap-2"><span class="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"><i class="ph-bold ph-check text-[9px]"></i></span><span><strong>Kolaborasi Lintas Platform:</strong> Desain dan review mulus di PC, smartphone, dan tablet.</span></li>
+                                </ul>
+                            </div>
+                        </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TRAINER ================= -->
+        <section id="trainer" class="px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto max-w-7xl">
+                <div class="mx-auto mb-9 max-w-2xl text-center sm:mb-12" data-reveal>
+                    <p class="mb-3 flex items-center justify-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>04 &mdash; Tim Ahli<span class="h-px w-7 bg-blue-600"></span></p>
+                    <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[46px]">Trainer <span class="accent grad-text">Berpengalaman</span></h2>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">Belajar langsung dari para ahli yang memiliki pengalaman industri dan sertifikasi internasional &mdash; satu tim yang siap mendampingi tim Anda.</p>
+                </div>
+
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70 sm:p-6" data-reveal style="transition-delay:80ms">
+                        <div class="flex items-center gap-3.5">
+                            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#1D63FF] to-[#00A6FF] text-sm font-extrabold text-white shadow-lg shadow-slate-300/40">BS</div>
+                            <div class="min-w-0">
+                                <h3 class="truncate text-base font-bold tracking-tight text-slate-900">Budi Santoso</h3>
+                                <p class="truncate text-[11px] font-medium text-slate-400">Senior CAD Specialist</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 flex-1 text-[13px] leading-relaxed text-slate-600">&ldquo;Dengan pengalaman lebih dari 10 tahun di industri manufaktur, saya fokus membantu profesional menguasai teknik pemodelan 3D dan assembly design yang efisien.&rdquo;</p>
+                        <div class="mt-5 flex flex-wrap gap-1.5">
+                            <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">3D Modeling</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Assembly Design</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Sheet Metal</span>
+                        </div>
+                    </article>
+<article class="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70 sm:p-6" data-reveal style="transition-delay:150ms">
+                        <div class="flex items-center gap-3.5">
+                            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 text-sm font-extrabold text-white shadow-lg shadow-slate-300/40">SR</div>
+                            <div class="min-w-0">
+                                <h3 class="truncate text-base font-bold tracking-tight text-slate-900">Siti Rahayu</h3>
+                                <p class="truncate text-[11px] font-medium text-slate-400">Industrial Design Expert</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 flex-1 text-[13px] leading-relaxed text-slate-600">&ldquo;Spesialisasi saya adalah surface modeling dan rendering untuk menghasilkan desain produk yang estetis dan fungsional. Mari belajar menciptakan desain memukau.&rdquo;</p>
+                        <div class="mt-5 flex flex-wrap gap-1.5">
+                            <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Part Design</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Surface Modeling</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Rendering</span>
+                        </div>
+                    </article>
+<article class="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70 sm:p-6" data-reveal style="transition-delay:220ms">
+                        <div class="flex items-center gap-3.5">
+                            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 text-sm font-extrabold text-white shadow-lg shadow-slate-300/40">AH</div>
+                            <div class="min-w-0">
+                                <h3 class="truncate text-base font-bold tracking-tight text-slate-900">Ahmad Hidayat</h3>
+                                <p class="truncate text-[11px] font-medium text-slate-400">Mechanical Engineer</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 flex-1 text-[13px] leading-relaxed text-slate-600">&ldquo;Berpengalaman dalam proyek konstruksi baja dan fabrikasi, saya akan membimbing Anda menguasai weldment design dan dokumentasi teknis yang akurat.&rdquo;</p>
+                        <div class="mt-5 flex flex-wrap gap-1.5">
+                            <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Weldment</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Drawing</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">MBD</span>
+                        </div>
+                    </article>
+<article class="relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-slate-200/70 sm:p-6" data-reveal style="transition-delay:290ms">
+                        <div class="flex items-center gap-3.5">
+                            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-sm font-extrabold text-white shadow-lg shadow-slate-300/40">DL</div>
+                            <div class="min-w-0">
+                                <h3 class="truncate text-base font-bold tracking-tight text-slate-900">Dewi Lestari</h3>
+                                <p class="truncate text-[11px] font-medium text-slate-400">CAD Automation Specialist</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 flex-1 text-[13px] leading-relaxed text-slate-600">&ldquo;Otomatisasi adalah kunci efisiensi. Saya akan mengajarkan teknik parametric design dan scripting untuk meningkatkan produktivitas desain Anda hingga 10x lipat.&rdquo;</p>
+                        <div class="mt-5 flex flex-wrap gap-1.5">
+                            <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Parametric</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Scripting</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">Automation</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:mt-10" data-reveal>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[11px] font-semibold text-slate-600"><i class="ph-bold ph-medal text-blue-600"></i>10+ tahun pengalaman</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[11px] font-semibold text-slate-600"><i class="ph-bold ph-certificate text-blue-600"></i>Sertifikasi internasional</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[11px] font-semibold text-slate-600"><i class="ph-bold ph-translate text-blue-600"></i>Materi Bahasa Indonesia</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BENEFITS ================= -->
+        <section id="benefits" class="border-y border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-9 grid gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end lg:gap-14">
+                    <div data-reveal>
+                        <p class="mb-3 flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>05 &mdash; After Sales</p>
+                        <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[46px]">Setelah Lisensi Aktif,<br class="hidden sm:block" /> <span class="accent grad-text">Kami Tetap Mendampingi</span></h2>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-600 sm:text-base" data-reveal style="transition-delay:80ms">
+                        Adopsi CAD cloud bukan sekadar ganti software. Kami bantu tim Anda dari implementasi awal, pelatihan, sampai operasional harian &mdash; dengan tim lokal berbahasa Indonesia.
+                    </p>
+                </div>
+
+                <div class="grid gap-x-10 gap-y-7 md:grid-cols-2">
+                    <article class="group flex items-start gap-4" data-reveal style="transition-delay:60ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/onboarding.jpg" alt="Diskusi implementasi dan onboarding CrownCAD bersama tim pelanggan" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">01</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">Onboarding &amp; Implementasi</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Pendampingan setup workspace, migrasi data dari CAD lama, dan uji coba alur kerja sebelum rollout ke seluruh tim.</p>
+                        </div>
+                    </article>
+<article class="group flex items-start gap-4" data-reveal style="transition-delay:120ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/training.jpg" alt="Sesi pelatihan CrownCAD bersama puluhan peserta dari tim pelanggan" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">02</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">Pelatihan Tim &amp; Sertifikasi</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Sesi training basic sampai advanced, materi berbahasa Indonesia, plus sertifikasi untuk memastikan tim siap produksi.</p>
+                        </div>
+                    </article>
+<article class="group flex items-start gap-4" data-reveal style="transition-delay:180ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/support.jpg" alt="Pendampingan teknis CrownCAD langsung di lokasi pelanggan" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">03</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">Dukungan Teknis Lokal</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Tim support Indonesia dengan respons di bawah 1&times;24 jam pada hari kerja dan jalur eskalasi langsung ke engineer produk.</p>
+                        </div>
+                    </article>
+<article class="group flex items-start gap-4" data-reveal style="transition-delay:60ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/updates.jpg" alt="Sesi demo fitur dan pembaruan terbaru platform CrownCAD" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">04</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">Update &amp; Fitur Baru Gratis</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Karena cloud-native, rilis fitur baru, perbaikan bug, dan patch keamanan langsung aktif tanpa instalasi ulang.</p>
+                        </div>
+                    </article>
+<article class="group flex items-start gap-4" data-reveal style="transition-delay:120ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/consulting.jpg" alt="Konsultasi best practice dan review workflow CAD bersama tim" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">05</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">Konsultasi &amp; Best Practice</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Review workflow CAD, optimasi performa model besar, dan rekomendasi standar drafting sesuai kebutuhan industri Anda.</p>
+                        </div>
+                    </article>
+<article class="group flex items-start gap-4" data-reveal style="transition-delay:180ms">
+                        <div class="relative aspect-[4/3] w-24 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 sm:w-32">
+                            <img src="assets/images/benefits/sla.jpg" alt="Dokumentasi kerja sama layanan CrownCAD dengan mitra pelanggan" width="1000" height="625" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                        </div>
+                        <div class="min-w-0 pt-0.5">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[10px] font-extrabold tabular-nums text-blue-600">06</span>
+                                <h3 class="text-[15px] font-bold leading-snug tracking-tight text-slate-900 sm:text-base">SLA &amp; Jaminan Layanan</h3>
+                            </div>
+                            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">Uptime 99,9%, backup harian, dan audit trail lengkap &mdash; dengan perjanjian layanan (SLA) yang jelas dan terukur.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:mt-12 sm:rounded-3xl sm:p-8" data-reveal>
+                    <div class="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+                        <div>
+                            <h3 class="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">Setiap implementasi sudah termasuk dukungan after-sales</h3>
+                            <p class="mt-1.5 text-[13px] text-slate-600 sm:text-sm">Pendampingan penuh &mdash; dari hari pertama sampai tim Anda mandiri.</p>
+                            <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[11.5px] font-medium text-slate-700 sm:text-xs">
+                                <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Onboarding 1-on-1</span>
+                                <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Training Bahasa Indonesia</span>
+                                <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Respons maks. 1&times;24 jam</span>
+                                <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Update cloud gratis</span>
+                            </div>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20konsultasi%20terkait%20CrownCAD" target="_blank" rel="noopener" class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:opacity-95 active:scale-95" style="background: linear-gradient(90deg, #1D63FF 0%, #00A6FF 100%);">
+                            <span>Jadwalkan Konsultasi</span>
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GALERI ================= -->
+        <section id="galeri" class="px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto max-w-7xl">
+                <div class="mx-auto mb-8 max-w-2xl text-center sm:mb-10" data-reveal>
+                    <p class="mb-3 flex items-center justify-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>06 &mdash; Galeri<span class="h-px w-7 bg-blue-600"></span></p>
+                    <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[46px]">Momen <span class="accent grad-text">Bersama Pengguna</span></h2>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">Sesi pelatihan, workshop, dan kunjungan industri bersama tim engineering di berbagai perusahaan serta institusi pendidikan di Indonesia.</p>
+                </div>
+
+                <div id="gallery-grid" class="grid auto-rows-[125px] grid-cols-2 gap-2.5 sm:auto-rows-[165px] sm:grid-cols-3 sm:gap-3 lg:auto-rows-[185px] lg:grid-cols-4" data-reveal>
+                    <button type="button" data-gallery-item data-full="assets/images/gallery/gallery-01.jpeg" aria-label="Buka foto kegiatan 1" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40 col-span-2 row-span-2 ">
+                        <img src="assets/images/gallery/gallery-01.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 01" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">01</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-02.jpeg" aria-label="Buka foto kegiatan 2" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-02.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 02" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">02</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-03.jpeg" aria-label="Buka foto kegiatan 3" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-03.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 03" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">03</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-04.jpeg" aria-label="Buka foto kegiatan 4" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-04.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 04" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">04</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-05.jpeg" aria-label="Buka foto kegiatan 5" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-05.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 05" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">05</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-06.jpeg" aria-label="Buka foto kegiatan 6" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-06.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 06" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">06</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-07.jpeg" aria-label="Buka foto kegiatan 7" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-07.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 07" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">07</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-08.jpeg" aria-label="Buka foto kegiatan 8" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  ">
+                        <img src="assets/images/gallery/gallery-08.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 08" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">08</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-09.jpeg" aria-label="Buka foto kegiatan 9" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-09.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 09" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">09</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-10.jpeg" aria-label="Buka foto kegiatan 10" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-10.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 10" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">10</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-11.jpeg" aria-label="Buka foto kegiatan 11" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-11.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 11" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">11</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-12.jpeg" aria-label="Buka foto kegiatan 12" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-12.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 12" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">12</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-13.jpeg" aria-label="Buka foto kegiatan 13" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-13.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 13" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">13</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-14.jpeg" aria-label="Buka foto kegiatan 14" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-14.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 14" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">14</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-15.jpeg" aria-label="Buka foto kegiatan 15" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-15.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 15" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">15</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-16.jpeg" aria-label="Buka foto kegiatan 16" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-16.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 16" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">16</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-17.jpeg" aria-label="Buka foto kegiatan 17" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-17.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 17" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">17</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-18.jpeg" aria-label="Buka foto kegiatan 18" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-18.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 18" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">18</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-19.jpeg" aria-label="Buka foto kegiatan 19" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-19.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 19" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">19</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-20.jpeg" aria-label="Buka foto kegiatan 20" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-20.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 20" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">20</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-21.jpeg" aria-label="Buka foto kegiatan 21" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-21.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 21" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">21</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-22.jpeg" aria-label="Buka foto kegiatan 22" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-22.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 22" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">22</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-23.jpeg" aria-label="Buka foto kegiatan 23" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-23.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 23" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">23</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+<button type="button" data-gallery-item data-full="assets/images/gallery/gallery-24.jpeg" aria-label="Buka foto kegiatan 24" class="gallery-item group relative overflow-hidden rounded-xl bg-slate-200 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40  gallery-extra hidden sm:block">
+                        <img src="assets/images/gallery/gallery-24.jpeg" alt="Dokumentasi kegiatan CrownCAD Indonesia 24" loading="lazy" decoding="async" class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110" />
+                        <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/5 to-transparent opacity-60 transition group-hover:opacity-90"></span>
+                        <span class="pointer-events-none absolute bottom-2.5 left-3 text-[10px] font-bold tracking-widest text-white/90">24</span>
+                        <span class="pointer-events-none absolute bottom-2.5 right-2.5 grid h-7 w-7 translate-y-2 place-items-center rounded-full bg-white/95 text-slate-900 opacity-0 shadow-lg transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"><i class="ph-bold ph-arrows-out text-xs"></i></span>
+                    </button>
+                </div>
+
+                <div class="mt-5 text-center sm:hidden">
+                    <button type="button" id="gallery-expand-btn" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-bold text-slate-700 shadow-sm transition hover:border-blue-300 active:scale-95">
+                        <i class="ph-bold ph-plus-circle text-base text-blue-600"></i>
+                        <span>Tampilkan Semua Foto (24)</span>
+                    </button>
+                </div>
+
+                <div class="mt-9 text-center sm:mt-11" data-reveal>
+                    <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20menjadwalkan%20demo%20CrownCAD" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-800 shadow-sm transition hover:border-blue-400 hover:text-blue-700 active:scale-95">
+                        <span>Jadwalkan Sesi Bersama Kami</span>
+                        <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DEMO CTA ================= -->
+        <section id="demo" class="px-4 py-16 sm:px-6 sm:py-20">
+            <div class="mx-auto max-w-7xl">
+                <div class="relative overflow-hidden rounded-[28px] text-white sm:rounded-[36px]" style="background: radial-gradient(120% 130% at 78% -10%, #123A9E 0%, #081A47 44%, #04091A 100%);">
+                    <div class="blueprint pointer-events-none absolute inset-0 opacity-20" aria-hidden="true"></div>
+                    <div class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#1D63FF]/30 blur-3xl" aria-hidden="true"></div>
+                    <div class="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#00A6FF]/15 blur-3xl" aria-hidden="true"></div>
+
+                    <div class="relative grid gap-10 px-5 py-10 sm:px-9 sm:py-12 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] lg:items-center lg:gap-14 lg:px-14 lg:py-14">
+                        <div data-reveal>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-sky-300 backdrop-blur">
+                                <span class="relative flex h-1.5 w-1.5" aria-hidden="true">
+                                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-300 opacity-70"></span>
+                                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-sky-300"></span>
+                                </span>
+                                Demo &amp; Konsultasi
+                            </span>
+                            <h2 class="mt-5 text-[30px] font-extrabold leading-[1.06] tracking-[-0.03em] sm:text-4xl lg:text-[44px]">Siap modernisasi<br /> <span class="accent text-sky-300">proses desain Anda?</span></h2>
+                            <p class="mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">Bergabung dengan 10.000+ perusahaan manufaktur yang sudah beralih ke CrownCAD. Dalam sesi 30 menit, tim kami memetakan kebutuhan Anda, memperlihatkan alur kerja di browser, dan menyusun rekomendasi implementasi.</p>
+
+                            <div class="mt-7 flex w-full max-w-sm flex-col gap-2.5 sm:max-w-none sm:flex-row">
+                                <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20menjadwalkan%20demo%20CrownCAD" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-xl transition hover:-translate-y-0.5 active:scale-95">
+                                    <span>Jadwalkan Demo</span>
+                                    <i class="ph-bold ph-arrow-right"></i>
+                                </a>
+                                <a href="#contact" class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15">
+                                    Kontak &amp; Lokasi
+                                </a>
+                            </div>
+
+                            <p class="mt-6 text-[11.5px] font-medium leading-snug text-slate-400"><span class="font-bold text-white">10.000+ perusahaan</span> sudah memakai CrownCAD</p>
+                        </div>
+
+                        <div class="relative" data-reveal style="transition-delay:120ms">
+                            <div class="rounded-2xl border border-white/15 bg-white/[0.07] p-5 backdrop-blur sm:p-6">
+                                <div class="flex items-center justify-between gap-3">
+                                    <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-300">Agenda demo</p>
+                                    <span class="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold text-white ring-1 ring-white/15">30 menit</span>
+                                </div>
+                                <ol class="mt-5 space-y-4">
+                                    <li class="flex gap-3.5">
+                                        <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/10 text-[10px] font-extrabold tabular-nums text-sky-200 ring-1 ring-white/15">01</span>
+                                        <div>
+                                            <p class="text-[13px] font-bold text-white">Pemetaan kebutuhan</p>
+                                            <p class="mt-0.5 text-[11.5px] leading-relaxed text-slate-400">Alur kerja, jumlah pengguna, dan format file CAD yang dipakai tim Anda.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex gap-3.5">
+                                        <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/10 text-[10px] font-extrabold tabular-nums text-sky-200 ring-1 ring-white/15">02</span>
+                                        <div>
+                                            <p class="text-[13px] font-bold text-white">Demo langsung di browser</p>
+                                            <p class="mt-0.5 text-[11.5px] leading-relaxed text-slate-400">Pemodelan, assembly, drawing, dan kolaborasi real-time tanpa instalasi.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex gap-3.5">
+                                        <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/10 text-[10px] font-extrabold tabular-nums text-sky-200 ring-1 ring-white/15">03</span>
+                                        <div>
+                                            <p class="text-[13px] font-bold text-white">Rekomendasi &amp; langkah lanjut</p>
+                                            <p class="mt-0.5 text-[11.5px] leading-relaxed text-slate-400">Skema lisensi, rencana implementasi, dan opsi pendampingan tim.</p>
+                                        </div>
+                                    </li>
+                                </ol>
+                                <p class="mt-5 flex items-center gap-2 border-t border-white/10 pt-4 text-[11px] font-medium text-slate-300">
+                                    <i class="ph-fill ph-whatsapp-logo text-base text-emerald-400"></i>
+                                    Gratis, dijadwalkan lewat WhatsApp
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative border-t border-white/10 px-5 py-4 sm:px-9 lg:px-14">
+                        <div class="grid gap-2.5 sm:grid-cols-3 sm:gap-4">
+                            <span class="inline-flex items-center gap-2 text-[11.5px] font-medium text-slate-300"><i class="ph-fill ph-check-circle text-emerald-400"></i>Trial 30 hari gratis</span>
+                            <span class="inline-flex items-center gap-2 text-[11.5px] font-medium text-slate-300"><i class="ph-fill ph-check-circle text-emerald-400"></i>99,9% uptime SLA</span>
+                            <span class="inline-flex items-center gap-2 text-[11.5px] font-medium text-slate-300"><i class="ph-fill ph-check-circle text-emerald-400"></i>Pendampingan tim lokal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-24">
+            <div class="mx-auto grid max-w-7xl gap-9 lg:grid-cols-12 lg:gap-10">
+                <div class="lg:col-span-5" data-reveal>
+                    <p class="mb-3 flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-600 sm:text-[11px]"><span class="h-px w-7 bg-blue-600"></span>07 &mdash; Hubungi Kami</p>
+                    <h2 class="text-3xl font-extrabold leading-[1.06] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[44px]">Mari bicara soal<br class="sm:hidden" /> <span class="accent grad-text">proses desain Anda</span></h2>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">Tim PT Vexa Dinamika Teknologi siap membantu memilih lisensi, menjadwalkan training, atau mendampingi implementasi di tim Anda &mdash; datang langsung ke kantor atau hubungi kami.</p>
+
+                    <div class="mt-6 space-y-2.5">
+                        <div class="flex gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-200"><i class="ph-fill ph-map-pin text-lg"></i></span>
+                            <div>
+                                <div class="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">Kantor</div>
+                                <address class="mt-0.5 text-[13px] font-semibold not-italic leading-snug text-slate-800">Plaza Summarecon Bekasi, Lantai 6<br />Bekasi 17142, Jawa Barat</address>
+                            </div>
+                        </div>
+                        <div class="flex gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-200"><i class="ph-fill ph-phone text-lg"></i></span>
+                            <div>
+                                <div class="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">Telepon &amp; WhatsApp</div>
+                                <p class="mt-0.5 text-[13px] font-semibold leading-snug text-slate-800">
+                                    <a href="tel:+622138317110" class="transition hover:text-blue-600">021-3831-7110</a>
+                                    <span class="mx-1 text-slate-300">/</span>
+                                    <a href="https://wa.me/6281902244660" target="_blank" rel="noopener" class="transition hover:text-blue-600">0819-0224-4660</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-200"><i class="ph-fill ph-envelope-simple text-lg"></i></span>
+                            <div>
+                                <div class="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">Email</div>
+                                <p class="mt-0.5 break-all text-[13px] font-semibold leading-snug text-slate-800"><a href="mailto:info@vexatekno.com" class="transition hover:text-blue-600">info@vexatekno.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex flex-col gap-2.5 sm:flex-row">
+                        <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20konsultasi%20terkait%20CrownCAD" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:opacity-95" style="background: linear-gradient(90deg, #1D63FF 0%, #00A6FF 100%);">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i><span>Chat WhatsApp</span>
+                        </a>
+                        <a href="mailto:info@vexatekno.com" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-slate-700 transition hover:border-blue-400 hover:text-blue-700">
+                            <i class="ph-bold ph-envelope-simple"></i><span>Kirim Email</span>
+                        </a>
+                    </div>
+
+                    <div class="mt-6 flex items-center gap-3">
+                        <span class="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">Ikuti kami</span>
+                        <span class="h-px w-6 bg-slate-200"></span>
+                        <a href="https://www.instagram.com/vexa.teknologi/" target="_blank" rel="noopener" aria-label="Instagram PT Vexa Dinamika Teknologi" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-slate-500 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-900 hover:text-white"><i class="ph-fill ph-instagram-logo text-lg"></i></a>
+                        <a href="https://www.linkedin.com/company/vexa-dinamika-teknologi/" target="_blank" rel="noopener" aria-label="LinkedIn PT Vexa Dinamika Teknologi" class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-slate-500 transition hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-900 hover:text-white"><i class="ph-fill ph-linkedin-logo text-lg"></i></a>
+                    </div>
+                </div>
+
+                <div class="flex lg:col-span-7" data-reveal style="transition-delay:90ms">
+                    <div class="flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/50 sm:rounded-3xl">
+                        <div class="flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-3.5">
+                            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">Lokasi kantor</p>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=Plaza+Summarecon+Bekasi" target="_blank" rel="noopener" class="inline-flex items-center gap-1 whitespace-nowrap text-[11px] font-bold text-blue-600 transition hover:text-blue-700">Buka di Google Maps <i class="ph-bold ph-arrow-up-right text-[10px]"></i></a>
+                        </div>
+                        <div class="relative min-h-[280px] flex-1 bg-slate-100 sm:min-h-[420px]">
+                            <iframe id="vexa-map" src="https://maps.google.com/maps?q=-6.2247,106.9993&amp;t=m&amp;z=16&amp;output=embed" title="Peta lokasi PT Vexa Dinamika Teknologi di Plaza Summarecon Bekasi" class="pointer-events-none absolute inset-0 h-full w-full" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                            <button type="button" id="map-activate" class="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-slate-900/35 via-transparent to-transparent pb-4">
+                                <span class="rounded-full bg-slate-900/85 px-4 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur">Klik untuk menjelajah peta</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-[#040A1E] px-4 pb-24 pt-12 text-slate-400 sm:px-6 sm:pb-12">
+        <div class="mx-auto max-w-7xl">
+            <div class="grid gap-8 border-b border-white/10 pb-9 sm:grid-cols-2 md:grid-cols-4">
+                <div class="sm:col-span-2" data-reveal>
+                    <img src="assets/images/logo-white.png" alt="CrownCAD" class="h-9 w-auto object-contain sm:h-10" />
+                    <p class="mt-3 max-w-md text-xs leading-relaxed text-slate-400 sm:text-sm">Platform CAD 3D cloud-native dengan kolaborasi real-time, dual-kernel, dan kontrol versi terpusat &mdash; untuk industri Indonesia.</p>
+                    <div class="mt-5 flex items-center gap-2.5">
+                        <a href="https://www.instagram.com/vexa.teknologi/" target="_blank" rel="noopener" aria-label="Instagram PT Vexa Dinamika Teknologi" class="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"><i class="ph-fill ph-instagram-logo text-lg"></i></a>
+                        <a href="https://www.linkedin.com/company/vexa-dinamika-teknologi/" target="_blank" rel="noopener" aria-label="LinkedIn PT Vexa Dinamika Teknologi" class="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"><i class="ph-fill ph-linkedin-logo text-lg"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20konsultasi%20terkait%20CrownCAD" target="_blank" rel="noopener" aria-label="WhatsApp PT Vexa Dinamika Teknologi" class="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"><i class="ph-fill ph-whatsapp-logo text-lg"></i></a>
+                    </div>
+                </div>
+                <div data-reveal style="transition-delay:60ms">
+                    <h4 class="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Produk</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#produk" class="transition hover:text-sky-400">Part Design</a></li>
+                        <li><a href="#produk" class="transition hover:text-sky-400">Assembly</a></li>
+                        <li><a href="#produk" class="transition hover:text-sky-400">Drawing 2D</a></li>
+                        <li><a href="#solusi" class="transition hover:text-sky-400">Kolaborasi Cloud</a></li>
+                    </ul>
+                </div>
+                <div data-reveal style="transition-delay:120ms">
+                    <h4 class="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Perusahaan</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#galeri" class="transition hover:text-sky-400">Galeri</a></li>
+                        <li><a href="#benefits" class="transition hover:text-sky-400">After Sales</a></li>
+                        <li><a href="#mengapa" class="transition hover:text-sky-400">Tentang</a></li>
+                        <li><a href="#contact" class="transition hover:text-sky-400">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-between gap-2 pt-6 text-center text-[11px] sm:flex-row sm:text-left sm:text-xs">
+                <p>&copy; 2026 CrownCAD Indonesia. All rights reserved.</p>
+                <p class="text-slate-500">crowncad-distributor.co.id &bull; PT Vexa Dinamika Teknologi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= FLOATING ACTIONS ================= -->
+    <a id="wa-float" href="https://api.whatsapp.com/send?phone=6281902244660&amp;text=Halo%20Vexa%2C%20saya%20ingin%20konsultasi%20terkait%20CrownCAD" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" class="wa-float fixed bottom-4 left-4 z-30 inline-flex h-14 items-center justify-start rounded-full text-white sm:bottom-6 sm:left-6 sm:h-16">
+        <span class="wa-float-icon h-14 w-14 sm:h-16 sm:w-16">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-[26px] w-[26px] sm:h-8 sm:w-8" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </span>
+        <span class="wa-float-text">Chat with us</span>
+    </a>
+
+    <button id="to-top" type="button" aria-label="Kembali ke atas halaman" aria-hidden="true" tabindex="-1" class="to-top fixed bottom-4 right-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-slate-300/80 bg-white/95 text-slate-700 shadow-xl backdrop-blur transition hover:border-[#1D63FF]/40 hover:text-[#1D63FF] active:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D63FF] sm:bottom-6 sm:right-6 sm:h-12 sm:w-12">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+    </button>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-[70] hidden items-center justify-center bg-slate-950/95 px-3 py-4 backdrop-blur-md sm:px-4 sm:py-6" role="dialog" aria-modal="true" aria-label="Galeri foto" aria-hidden="true">
+        <button id="gallery-lightbox-close" type="button" aria-label="Tutup galeri" class="absolute right-3 top-3 z-20 grid h-10 w-10 place-items-center rounded-full bg-slate-900/80 text-white ring-1 ring-white/20 transition hover:bg-slate-900 active:scale-95 sm:right-6 sm:top-6 sm:h-11 sm:w-11"><i class="ph-bold ph-x text-lg sm:text-xl"></i></button>
+        <button id="gallery-lightbox-prev" type="button" aria-label="Foto sebelumnya" class="absolute left-2 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-slate-900/80 text-white ring-1 ring-white/20 transition hover:bg-slate-900 active:scale-95 sm:left-6 sm:h-11 sm:w-11"><i class="ph-bold ph-caret-left text-lg sm:text-xl"></i></button>
+        <button id="gallery-lightbox-next" type="button" aria-label="Foto berikutnya" class="absolute right-2 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-slate-900/80 text-white ring-1 ring-white/20 transition hover:bg-slate-900 active:scale-95 sm:right-6 sm:h-11 sm:w-11"><i class="ph-bold ph-caret-right text-lg sm:text-xl"></i></button>
+        <figure class="flex max-h-full max-w-5xl flex-col items-center gap-2 px-2 sm:gap-3">
+            <img id="gallery-lightbox-image" alt="" class="max-h-[72vh] w-auto max-w-full select-none rounded-xl object-contain shadow-2xl sm:max-h-[78vh]" />
+            <figcaption id="gallery-lightbox-counter" class="mt-1 text-xs font-semibold tracking-widest text-white/80 sm:text-sm"></figcaption>
+        </figure>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isMobile = () => window.matchMedia('(max-width: 1023.98px)').matches;
+
+            /* ---------- mobile menu (instant open, instant jump) ---------- */
+            const menu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            function setMenu(open) {
+                menu.classList.toggle('hidden', !open);
+                menuBtn.setAttribute('aria-expanded', String(open));
+                document.body.classList.toggle('overflow-hidden', open);
+            }
+            menuBtn.addEventListener('click', () => setMenu(true));
+            menuClose.addEventListener('click', () => setMenu(false));
+            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && !menu.classList.contains('hidden')) setMenu(false);
+            });
+
+            /* ---------- header state + active nav ---------- */
+            const header = document.getElementById('site-header');
+            const navLinks = [...document.querySelectorAll('.nav-link')];
+            const spySections = [...document.querySelectorAll('section[id]')];
+            function syncHeader() {
+                header.classList.toggle('is-scrolled', window.scrollY > 8);
+                const y = window.scrollY + 150;
+                let current = '';
+                spySections.forEach(sec => { if (sec.offsetTop <= y) current = sec.id; });
+                navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + current));
+            }
+            window.addEventListener('scroll', syncHeader, { passive: true });
+            syncHeader();
+
+            /* ---------- reveal ---------- */
+            const revealEls = [...document.querySelectorAll('[data-reveal]')];
+            if (prefersReduced || !('IntersectionObserver' in window)) {
+                revealEls.forEach(el => el.classList.add('is-visible'));
+            } else {
+                const revealIO = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            revealIO.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+                revealEls.forEach(el => revealIO.observe(el));
+            }
+
+            /* ---------- counters ---------- */
+            const counters = [...document.querySelectorAll('[data-count]')];
+            const fmt = n => Math.round(n).toLocaleString('id-ID');
+            function runCounter(el) {
+                if (el.dataset.done) return;
+                el.dataset.done = '1';
+                const target = parseFloat(el.dataset.count) || 0;
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                if (prefersReduced) { el.textContent = prefix + fmt(target) + suffix; return; }
+                const dur = 1100, t0 = performance.now();
+                function tick(now) {
+                    const p = Math.min(1, (now - t0) / dur);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = prefix + fmt(target * eased) + suffix;
+                    if (p < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+            if ('IntersectionObserver' in window && !prefersReduced) {
+                const cIO = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) { runCounter(entry.target); cIO.unobserve(entry.target); }
+                    });
+                }, { threshold: 0.4 });
+                counters.forEach(c => cIO.observe(c));
+            } else {
+                counters.forEach(runCounter);
+            }
+
+            /* ---------- module tabs ---------- */
+            const tabs = [...document.querySelectorAll('[data-tab]')];
+            const panels = {
+                core: document.getElementById('panel-core'),
+                pro: document.getElementById('panel-pro'),
+                collab: document.getElementById('panel-collab')
+            };
+            function activateTab(key, moveFocus) {
+                tabs.forEach(tab => {
+                    const on = tab.dataset.tab === key;
+                    tab.classList.toggle('is-active', on);
+                    tab.setAttribute('aria-selected', String(on));
+                    tab.tabIndex = on ? 0 : -1;
+                    if (on && moveFocus) tab.focus();
+                });
+                Object.keys(panels).forEach(k => {
+                    const on = k === key;
+                    panels[k].classList.toggle('hidden', !on);
+                    panels[k].setAttribute('aria-hidden', String(!on));
+                });
+            }
+            tabs.forEach((tab, i) => {
+                tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+                tab.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        const next = tabs[(i + 1) % tabs.length];
+                        activateTab(next.dataset.tab, true);
+                    }
+                    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const prev = tabs[(i - 1 + tabs.length) % tabs.length];
+                        activateTab(prev.dataset.tab, true);
+                    }
+                });
+            });
+
+            /* ---------- gallery expand ---------- */
+            const expandBtn = document.getElementById('gallery-expand-btn');
+            if (expandBtn) {
+                expandBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.gallery-extra').forEach(el => el.classList.remove('hidden'));
+                    expandBtn.remove();
+                });
+            }
+
+            /* ---------- gallery lightbox ---------- */
+            const items = [...document.querySelectorAll('[data-gallery-item]')];
+            const lightbox = document.getElementById('gallery-lightbox');
+            const lbImage = document.getElementById('gallery-lightbox-image');
+            const lbCounter = document.getElementById('gallery-lightbox-counter');
+            const lbClose = document.getElementById('gallery-lightbox-close');
+            let current = 0;
+            function renderLightbox() {
+                const item = items[current];
+                const img = item.querySelector('img');
+                lbImage.src = item.dataset.full;
+                lbImage.alt = img ? img.alt : 'Dokumentasi kegiatan CrownCAD Indonesia';
+                lbCounter.textContent = (current + 1) + ' / ' + items.length;
+            }
+            function openLightbox(index) {
+                current = (index + items.length) % items.length;
+                renderLightbox();
+                lightbox.classList.add('open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('overflow-hidden');
+                lbClose.focus();
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('overflow-hidden');
+                if (items[current]) items[current].focus();
+            }
+            if (lightbox && items.length) {
+                items.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(i)));
+                lbClose.addEventListener('click', closeLightbox);
+                document.getElementById('gallery-lightbox-prev').addEventListener('click', () => { current = (current - 1 + items.length) % items.length; renderLightbox(); });
+                document.getElementById('gallery-lightbox-next').addEventListener('click', () => { current = (current + 1) % items.length; renderLightbox(); });
+                lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+                document.addEventListener('keydown', e => {
+                    if (!lightbox.classList.contains('open')) return;
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') { current = (current - 1 + items.length) % items.length; renderLightbox(); }
+                    if (e.key === 'ArrowRight') { current = (current + 1) % items.length; renderLightbox(); }
+                });
+            }
+
+            /* ---------- back to top ---------- */
+            const toTop = document.getElementById('to-top');
+            function syncToTop() {
+                const show = window.scrollY > 520;
+                toTop.classList.toggle('is-visible', show);
+                toTop.setAttribute('aria-hidden', String(!show));
+                toTop.tabIndex = show ? 0 : -1;
+            }
+            window.addEventListener('scroll', syncToTop, { passive: true });
+            syncToTop();
+            toTop.addEventListener('click', () => {
+                const instant = prefersReduced || isMobile();
+                if (instant) {
+                    toTop.style.transition = 'none';
+                    toTop.classList.remove('is-visible');
+                    window.scrollTo({ top: 0, behavior: 'auto' });
+                    setTimeout(() => { toTop.style.transition = ''; }, 400);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+
+            /* ---------- map ---------- */
+            const mapActivate = document.getElementById('map-activate');
+            const mapFrame = document.getElementById('vexa-map');
+            if (mapActivate && mapFrame) {
+                mapActivate.addEventListener('click', () => {
+                    mapFrame.classList.remove('pointer-events-none');
+                    mapActivate.remove();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
